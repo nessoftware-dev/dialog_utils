@@ -1,0 +1,21 @@
+name: dialog_utils_example
+description: Example app for dialog_utils.
+publish_to: 'none'
+
+environment:
+  sdk: ^3.9.2
+  flutter: '>=1.17.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dialog_utils:
+    path: ..
+  result_utils: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
