@@ -17,7 +17,7 @@ class DialogExamplesPage extends StatelessWidget {
               onPressed: () => DialogUtils().showErrorDlg(
                 context,
                 title: 'Error',
-                content: 'This dialog uses DialogUtilsStyle from ThemeData.',
+                content: 'This is an error dialog which uses DialogUtilsStyle from ThemeData.',
               ),
               child: const Text('Show error dialog'),
             ),
@@ -36,7 +36,7 @@ class DialogExamplesPage extends StatelessWidget {
                 context,
                 title: 'Delete document?',
                 content: 'This action cannot be undone.',
-                confirmButtonTxt: 'Delete',
+                confirmButtonText: 'Delete',
               ),
               child: const Text('Show confirmation dialog'),
             ),

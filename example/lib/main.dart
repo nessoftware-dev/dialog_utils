@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dialog_utils/dialog_utils.dart';
+// import 'package:dialog_utils/dialog_utils.dart';
 
 import 'dialog_examples_page.dart';
 import 'dialog_examples_page_ext.dart';
@@ -19,6 +19,7 @@ class DialogUtilsExampleApp extends StatelessWidget {
       title: 'Dialog Utils Example',
       theme: ThemeData(
         colorScheme: colorScheme,
+        /* optional declare you own dialog utils theme
         extensions: const [
           DialogUtilsStyle(
             titleTextStyle: TextStyle(
@@ -34,13 +35,9 @@ class DialogUtilsExampleApp extends StatelessWidget {
             dialogRadius: 16,
             buttonMinimumSize: Size(120, 50),
           ),
-        ],
+        ], */
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
+          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
         ),
       ),
       home: const DialogExamplesNavigationPage(),
@@ -65,9 +62,7 @@ class DialogExamplesNavigationPage extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [DialogExamplesPage(), OverriddenDialogExamplesPage()],
-        ),
+        body: const TabBarView(children: [DialogExamplesPage(), OverriddenDialogExamplesPage()]),
       ),
     );
   }

@@ -30,7 +30,9 @@ import 'package:dialog_utils/dialog_utils.dart';
 
 `DialogUtilsStyle` is a Flutter `ThemeExtension`. Declare it alongside standard
 Flutter theme configuration. The reusable `DialogUtils()` instance reads the
-nearest style from the `BuildContext` when a dialog is shown.
+nearest style from the `BuildContext` when a dialog is shown. If the theme has
+no `DialogUtilsStyle` extension, the constructor defaults on `DialogUtilsStyle`
+are used.
 
 ```dart
 MaterialApp(
@@ -66,10 +68,10 @@ MaterialApp(
 
 ## Custom Icons And Styles
 
-Subclass `DialogUtils` and override any style method or icon method. Icon hooks
-return `Widget`, so they can return an `Icon` or a completely custom widget.
-Use `DialogUtils.withStyle` for an independent instance instead of the shared
-factory instance.
+Subclass `DialogUtils` and override any style method, icon method, or dialog
+method. Icon hooks return `Widget`, so they can return an `Icon` or a
+completely custom widget. Use `DialogUtils.withStyle` for an independent
+instance instead of the shared factory instance.
 
 ```dart
 class AppDialogUtils extends DialogUtils {
@@ -103,24 +105,29 @@ Builder(
 
 The built-in override points are `dialogTitleStyle`, `dialogContentStyle`,
 `dialogButtonTextStyle`, `defaultButtonStyle`, `primaryButtonStyle`,
-`errorIcon`, `successIcon`, `infoIcon`, `dialogBarrierColor`, and `dialogShape`.
+`errorIcon`, `successIcon`, `infoIcon`, `dialogBarrierColor`, `dialogShape`,
+`showErrorDlg`, `showSuccessDlg`, `showConfirmDlg`, `showInfoDlg`, and
+`showWaitingDlg`.
 
 ## Available Dialogs
 
 - `showErrorDlg` shows an error with OK and optional cancel actions.
 - `showSuccessDlg` shows a success message with OK and optional cancel actions.
 - `showConfirmDlg` shows cancel and confirm actions and returns the choice.
-- `showInfoDlg` shows an informational message with an OK action.
+- `showInfoDlg` shows an informational message with OK and optional cancel actions.
 - `showWaitingDlg` displays progress while an asynchronous `FutureResult` runs.
-
-For simple applications, equivalent top-level functions are also available.
-They use the shared default `DialogUtils` instance.
 
 ## Example
 
 See the complete runnable application in
 [`example/lib/main.dart`](example/lib/main.dart). It demonstrates both direct
 factory usage and custom icon overrides.
+
+### Screenshots
+
+| Error | Success | Confirm | Info | Waiting |
+|---|---|---|---|---|
+| <img src="doc/error_dialog.png" width="150"> | <img src="doc/success_dialog.png" width="150"> | <img src="doc/confirm_dialog.png" width="150"> | <img src="doc/info_dialog.png" width="150"> | <img src="doc/waiting_dialog.png" width="150"> |
 
 ## License
 
