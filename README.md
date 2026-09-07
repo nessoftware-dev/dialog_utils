@@ -11,6 +11,14 @@ styles and icons.
 - Subclass hooks for replacing styles and icon widgets
 - A reusable `DialogUtils()` factory instance
 
+### Available Dialogs
+
+- `showErrorDlg` shows an error with OK and optional cancel actions.
+- `showSuccessDlg` shows a success message with OK and optional cancel actions.
+- `showConfirmDlg` shows cancel and confirm actions and returns the choice.
+- `showInfoDlg` shows an informational message with OK and optional cancel actions.
+- `showWaitingDlg` displays progress while an asynchronous `FutureResult` runs.
+
 ## Installation
 
 Add the package to `pubspec.yaml`:
@@ -25,6 +33,53 @@ Then run `flutter pub get` and import the public entrypoint:
 ```dart
 import 'package:dialog_utils/dialog_utils.dart';
 ```
+
+## Example
+
+The following example displays a confirmation dialog and handles the user's choice:
+
+```dart
+final confirmed = await DialogUtils().showConfirmDlg(
+  context,
+  title: 'Delete item?',
+  content: 'This action cannot be undone.',
+  confirmButtonText: 'Delete',
+);
+
+if (confirmed) {
+  // Delete the item.
+}
+```
+
+### Waiting dialog
+
+`showWaitingDlg` displays a progress dialog while an asynchronous operation runs. The operation returns a `FutureResult` from the
+[`result_utils`](https://github.com/nessoftware-dev/result_utils) package.
+
+```dart
+final result = await DialogUtils().showWaitingDlg<String>(
+  context: context,
+  message: 'Saving...',
+  future: () async {
+    await saveData();
+    return FutureResult.success('Saved');
+  },
+);
+
+if (result.hasError) {
+  print('Error: ${result.error}');
+} else {
+  print('Data: ${result.value}');
+}
+```
+
+See the complete runnable application in [`example/lib/main.dart`](example/lib/main.dart). It demonstrates both direct factory usage and custom theme with icon overrides.
+
+### Screenshots
+
+| Error | Success | Confirm | Info | Waiting |
+|---|---|---|---|---|
+| <a href="doc/error_dialog.png" target="_blank"><img src="doc/error_dialog.png" width="150" alt="Error dialog"></a> | <a href="doc/success_dialog.png" target="_blank"><img src="doc/success_dialog.png" width="150" alt="Success dialog"></a> | <a href="doc/confirm_dialog.png" target="_blank"><img src="doc/confirm_dialog.png" width="150" alt="Confirm dialog"></a> | <a href="doc/info_dialog.png" target="_blank"><img src="doc/info_dialog.png" width="150" alt="Info dialog"></a> | <a href="doc/waiting_dialog.gif" target="_blank"><img src="doc/waiting_dialog.png" width="150" alt="Waiting dialog"></a> |
 
 ## Theming
 
@@ -108,26 +163,6 @@ The built-in override points are `dialogTitleStyle`, `dialogContentStyle`,
 `errorIcon`, `successIcon`, `infoIcon`, `dialogBarrierColor`, `dialogShape`,
 `showErrorDlg`, `showSuccessDlg`, `showConfirmDlg`, `showInfoDlg`, and
 `showWaitingDlg`.
-
-## Available Dialogs
-
-- `showErrorDlg` shows an error with OK and optional cancel actions.
-- `showSuccessDlg` shows a success message with OK and optional cancel actions.
-- `showConfirmDlg` shows cancel and confirm actions and returns the choice.
-- `showInfoDlg` shows an informational message with OK and optional cancel actions.
-- `showWaitingDlg` displays progress while an asynchronous `FutureResult` runs.
-
-## Example
-
-See the complete runnable application in
-[`example/lib/main.dart`](example/lib/main.dart). It demonstrates both direct
-factory usage and custom icon overrides.
-
-### Screenshots
-
-| Error | Success | Confirm | Info | Waiting |
-|---|---|---|---|---|
-| <img src="doc/error_dialog.png" width="150"> | <img src="doc/success_dialog.png" width="150"> | <img src="doc/confirm_dialog.png" width="150"> | <img src="doc/info_dialog.png" width="150"> | <img src="doc/waiting_dialog.png" width="150"> |
 
 ## License
 
