@@ -25,7 +25,7 @@ Add the package to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dialog_utils: ^0.0.1
+  dialog_utils: ^0.0.2
 ```
 
 Then run `flutter pub get` and import the public entrypoint:
