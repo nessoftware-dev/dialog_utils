@@ -1,6 +1,6 @@
 name: dialog_utils
 description: "Reusable Flutter dialogs with theme and subclass customization."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/nessoftware-dev/dialog_utils
 repository: https://github.com/nessoftware-dev/dialog_utils
 topics:

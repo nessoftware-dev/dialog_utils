@@ -56,7 +56,7 @@ class DialogUtils {
       side: primary ? null : BorderSide(width: 1, color: dialogStyle.buttonBorderColor ?? colorScheme.inversePrimary),
       textStyle: dialogButtonTextStyle(context),
     );
-    return Theme.of(context).elevatedButtonTheme.style?.merge(buttonStyle) ?? buttonStyle;
+    return buttonStyle.merge(Theme.of(context).elevatedButtonTheme.style);
   }
 
   /// Returns the icon widget used by error dialogs.
