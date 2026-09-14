@@ -34,7 +34,28 @@ Then run `flutter pub get` and import the public entrypoint:
 import 'package:dialog_utils/dialog_utils.dart';
 ```
 
-## Example
+## Examples
+
+### Error, success, and information dialogs
+
+The following example displays an error dialog:
+
+```dart
+DialogUtils().showErrorDlg(
+  context,
+  title: 'Error',
+  content: 'Something went wrong.',
+);
+```
+
+`okButtonText` and `cancelButtonText` are optional and can be used to customize
+the buttons of error, success, and information dialogs. The cancel button is
+shown only when `cancelButtonText` is set.
+
+`showSuccessDlg` and `showInfoDlg` are called in the same way.
+All dialog functions can be called directly without creating a global `DialogUtils` instance.
+
+### Confirmation dialog
 
 The following example displays a confirmation dialog and handles the user's choice:
 
@@ -73,7 +94,9 @@ if (result.hasError) {
 }
 ```
 
-See the complete runnable application in [`example/lib/main.dart`](example/lib/main.dart). It demonstrates both direct factory usage and custom theme with icon overrides.
+See the complete runnable application in [`example/lib/main.dart`](example/lib/main.dart), [`example/lib/dialog_examples_page.dart`](example/lib/dialog_examples_page.dart)
+and [`example/lib/dialog_examples_page_ext.dart`](example/lib/dialog_examples_page_ext.dart).\
+It demonstrates both direct factory usage and a custom theme with icon overrides.
 
 ### Screenshots
 
